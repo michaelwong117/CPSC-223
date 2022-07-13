@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "gmap.h": "c",
+        "vector": "c",
+        "gqueue.h": "c",
+        "optional": "c",
+        "ratio": "c",
+        "system_error": "c",
+        "array": "c",
+        "functional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "variant": "c"
+    }
+}

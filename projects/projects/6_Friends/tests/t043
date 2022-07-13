@@ -1,0 +1,13 @@
+#!/bin/bash
+# Graph contains vertex with edge with self
+
+trap "/usr/bin/killall -q -u $USER ./Friends 2>/dev/null" 0 1 2 3 9 15
+trap "/bin/rm -f $STDERR" 0 1 2 3 9 15
+if [ ! -x ./Friends ]; then
+  echo './Friends is missing or not executable'
+  echo './Friends is missing or not executable' 1>&2
+  exit 1
+fi
+
+
+/c/cs474/bin/run -stdout=/dev/null -stderr=/dev/null ./Friends /c/cs223/hw6/Tests/graph_self_edge.in mutual < /c/cs223/hw6/Tests/t043.in

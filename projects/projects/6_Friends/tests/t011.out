@@ -1,0 +1,24 @@
+A, B have minimum path length 1
+A, B have mutual friends C F
+B, C have minimum path length 1
+B, C have mutual friends A D
+A, C have minimum path length 1
+A, C have mutual friends B
+A, F have minimum path length 1
+A, F have mutual friends B
+F, B have minimum path length 1
+F, B have mutual friends A E
+F, E have minimum path length 1
+F, E have mutual friends B
+E, D have minimum path length 1
+E, D have mutual friends B G
+B, D have minimum path length 1
+B, D have mutual friends C E
+C, D have minimum path length 1
+C, D have mutual friends B
+D, G have minimum path length 1
+D, G have mutual friends E
+G, E have minimum path length 1
+G, E have mutual friends D
+B, E have minimum path length 1
+B, E have mutual friends D F

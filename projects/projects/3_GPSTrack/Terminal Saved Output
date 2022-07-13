@@ -1,0 +1,2102 @@
+Last login: Sun Oct 17 20:38:09 on ttys017
+Orbit:~ michaelw$ z
+Last failed login: Sat Oct 16 03:58:14 EDT 2021 from 172.27.60.91 on ssh:notty
+There were 3 failed login attempts since the last successful login.
+Last login: Fri Oct 15 00:58:06 2021 from 172.27.60.91
+                                  Welcome!
+
+
+                  If you are missing a course directory, create it with
+                  $ sudo register csXYZ
+                  Please report any issues to cs.support@yale.edu.
+
+                  REBOOT CYCLE:  Every Thursday ~07:00
+[mjw223@dolphin ~]$ ls
+cs223
+[mjw223@dolphin ~]$ cd cs223/projects/
+[mjw223@dolphin projects]$ ls
+lectures  projects  Testing
+[mjw223@dolphin projects]$ cd projects/
+[mjw223@dolphin projects]$ ls
+0_HelloWorld  1_C_StatementCounter  2_TSP  3_GPSTrack  track.c  track_unit.c
+[mjw223@dolphin projects]$ cd 3_GPSTrack/
+[mjw223@dolphin 3_GPSTrack]$ ls
+closest_bottom.in    location.c   track_malloc.c  vgcore.129317   vgcore.2915188
+closest_top.in       location.h   track_new.c     vgcore.129331   vgcore.3021588
+commandline.c        location.o   track.o         vgcore.1305222  vgcore.3391840
+Debugging Add Point  log          trackpoint.c    vgcore.1305974  vgcore.3392225
+glenn                makefile     trackpoint.h    vgcore.1306716  vgcore.3453192
+GPS                  more_math.c  trackpoint.o    vgcore.1313807  vgcore.706312
+GPS.c                more_math.h  TrackUnit       vgcore.189813   vgcore.706428
+GPS.o                more_math.o  track_unit.c    vgcore.206084
+input1.in            track.c      track_unit.o    vgcore.2297439
+input2.in            track.h      vgcore.127672   vgcore.2297458
+[mjw223@dolphin 3_GPSTrack]$ nake
+-bash: nake: command not found
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+earliesttime1: 52.000000
+earliesttime2: 10.000000
+-23.590000 76.148000 10.000000
+-23.349000 76.236000 25.000000
+-23.306000 76.436000 37.000000
+-23.349000 76.623000 42.000000
+-23.480000 76.716000 48.000000
+-23.524000 76.864000 52.000000
+-23.460000 77.003000 58.000000
+-23.359000 77.030000 66.000000
+-23.241000 77.134000 71.000000
+-23.194000 77.266000 75.000000
+-23.100000 77.353000 80.000000
+-23.142000 77.502000 90.000000
+-23.292000 77.523000 98.000000
+-23.397000 77.483000 106.000000
+-23.488000 77.620000 112.000000
+-23.617000 77.595000 120.000000
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+-23.590000 76.148000 10.000000
+-23.349000 76.236000 25.000000
+-23.306000 76.436000 37.000000
+-23.349000 76.623000 42.000000
+-23.480000 76.716000 48.000000
+-23.524000 76.864000 52.000000
+-23.460000 77.003000 58.000000
+-23.359000 77.030000 66.000000
+-23.241000 77.134000 71.000000
+-23.194000 77.266000 75.000000
+-23.100000 77.353000 80.000000
+-23.142000 77.502000 90.000000
+-23.292000 77.523000 98.000000
+-23.397000 77.483000 106.000000
+-23.488000 77.620000 112.000000
+-23.617000 77.595000 120.000000
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track_unit.c track.c log makefile
+Copying GPS.c
+Copying track_unit.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/testit 3 GPS
+/home/classes/cs223/Hwk3/test.GPS
+Copying location.c
+Copying location.h
+Copying more_math.c
+Copying more_math.h
+Copying track.h
+Copying trackpoint.c
+Copying trackpoint.h
+Overwriting modified required file track_unit.c
+Executing /home/classes/cs223/Hwk3/test.GPS
+
+Public test script for GPS (09/30/2021)
+
+***** Checking for warning messages *****
+Making -B ./GPS TrackUnit
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o more_math.o more_math.c
+gcc -Wall -std=c99 -pedantic -g   -c -o location.o location.c
+gcc -Wall -std=c99 -pedantic -g   -c -o trackpoint.o trackpoint.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_closest_approach’:
+track.c:655:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  655 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:656:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  656 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:665:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  665 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:707:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  707 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:708:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  708 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:717:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  717 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:595:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  595 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+gcc -Wall -std=c99 -pedantic -g   -c -o track_unit.o track_unit.c
+gcc -o TrackUnit -Wall -std=c99 -pedantic -g track_unit.o more_math.o location.o trackpoint.o track.o -lm
+makewarn: warning messages from -std=c11 -pedantic -Wall
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type one of the following commands
+depending on whether the file /c/cs223/hw3/Tests/tIJ is executable or not
+     /c/cs223/hw3/Tests/tIJ
+     ./GPS < /c/cs223/hw3/Tests/tIJ
+The answer expected is in /c/cs223/hw3/Tests/tIJ.out.
+
+
+           Unit Tests for Basic Functions (50 points)
+PASSED  001. track_create and track_destroy
+PASSED  002. track_add and track_get (matching timestamps)
+PASSED  003. track_add with nonincreasing timestamps
+PASSED  004. track_size
+PASSED  005. track_length (non-empty)
+PASSED  006. track_length (empty track)
+PASSED  007. track_get interpolated points
+PASSED  008. track_get out of bounds (too early)
+PASSED  009. track_for_each
+
+           Unit Tests for Basic Functions (50 points): 50 points
+
+           Unit Tests for track_merge (25 points)
+PASSED  010. Disjoint tracks
+PASSED  011. Overlap but distinct timestamps
+PASSED  012. Duplicate trackpoints
+PASSED  013. Conflicting trackpoints
+
+           Unit Tests for track_merge (25 points): 25 points
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions)
+PASSED  014. track_add and track_get
+PASSED  015. track_get interpolated points
+PASSED  016. track_get out of bounds (too early)
+PASSED  017. track_merge: disjoint tracks
+PASSED  018. track_merge: overlap but distinct timestamps
+PASSED  019. track_merge: duplicate trackpoints
+PASSED  020. track_merge: conflicting trackpoints
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions): 25 points
+
+           Unit Tests for track_closest_approach
+PASSED  021. track_closest_approach
+PASSED  022. valgrind
+
+           Unit Tests for track_closest_approach: 2 of 2 tests passed
+
+           GPS Executable
+PASSED  023. -combine
+PASSED  024. -closest
+PASSED  025. -combine with valgrind
+PASSED  026. -closest with valgrind
+
+           GPS Executable: 4 of 4 tests passed
+
+           Invalid Inputs
+PASSED  027. No arguments
+PASSED  028. Missing filename
+PASSED  029. File not found
+PASSED  030. Latitude out of range
+PASSED  031. Invalid longitude
+PASSED  032. Missing timestamp
+PASSED  033. Extra whitespace
+PASSED  034. EOF after longitude
+
+           Invalid Inputs: 8 of 8 tests passed
+
+           Timing
+1c1,3
+< PASS
+---
+> FAIL t035: -linear 40 47320 1183.000000>1000.000000
+> FAIL t035: -linear 160 687880 4299.250000>1000.000000
+> FAIL t035: -linear 640 10738120 16778.312500>1000.000000
+Error: STDOUT differs from expected
+FAILED  035. track_merge
+
+           Timing: 0 of 1 tests passed
+
+               Deductions for Violating Specification (0 => no violation)
+
+End of Public Script
+
+ Total score at first checkpoint: 100
+ 14 of  15 Additional tests passed for GPS
+
+           Possible Deductions (assessed later as appropriate)
+              -100 Hard-coding to defeat autograder
+               -10 Deficient style (comments, identifiers, formatting, ...)
+                -5 Does not make
+                -5 Makefile missing
+                -5 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+
+***** Checking log file *****
+Estimate: ESTIMATE of time to complete assignment: 25 hours
+Total: 39:00 TOTAL time spent
+
+***** Checking makefile *****
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/testit 3 GPS
+/home/classes/cs223/Hwk3/test.GPS
+Copying location.c
+Copying location.h
+Copying more_math.c
+Copying more_math.h
+Copying track.h
+Copying trackpoint.c
+Copying trackpoint.h
+Overwriting modified required file track_unit.c
+Executing /home/classes/cs223/Hwk3/test.GPS
+
+Public test script for GPS (09/30/2021)
+
+***** Checking for warning messages *****
+Making -B ./GPS TrackUnit
+gcc -Wall -std=c99 -pedantic -g -O3   -c -o GPS.o GPS.c
+GPS.c: In function ‘main’:
+GPS.c:209:8: warning: ‘earliesttime2’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  209 |     if (earliesttime2 < earliesttime1)
+      |        ^
+GPS.c:209:8: warning: ‘earliesttime1’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+gcc -Wall -std=c99 -pedantic -g -O3   -c -o more_math.o more_math.c
+gcc -Wall -std=c99 -pedantic -g -O3   -c -o location.o location.c
+gcc -Wall -std=c99 -pedantic -g -O3   -c -o trackpoint.o trackpoint.c
+gcc -Wall -std=c99 -pedantic -g -O3   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_closest_approach’:
+track.c:655:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  655 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:656:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  656 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:665:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  665 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:707:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  707 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:708:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  708 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:717:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  717 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:595:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  595 |   double min_time = -1;
+      |          ^~~~~~~~
+track.c: In function ‘track_get’:
+track.c:245:24: warning: ‘after’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  245 |   track_segment *seg = track_segment_create(before, after);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o GPS -Wall -std=c99 -pedantic -g -O3 GPS.o more_math.o location.o trackpoint.o track.o -lm
+gcc -Wall -std=c99 -pedantic -g -O3   -c -o track_unit.o track_unit.c
+track_unit.c: In function ‘main’:
+track_unit.c:171:7: warning: ‘on’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  171 |       test_timing_merge(n, on);
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~
+track_unit.c:171:7: warning: ‘n’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+gcc -o TrackUnit -Wall -std=c99 -pedantic -g -O3 track_unit.o more_math.o location.o trackpoint.o track.o -lm
+makewarn: warning messages from -std=c11 -pedantic -Wall
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type one of the following commands
+depending on whether the file /c/cs223/hw3/Tests/tIJ is executable or not
+     /c/cs223/hw3/Tests/tIJ
+     ./GPS < /c/cs223/hw3/Tests/tIJ
+The answer expected is in /c/cs223/hw3/Tests/tIJ.out.
+
+
+           Unit Tests for Basic Functions (50 points)
+PASSED  001. track_create and track_destroy
+PASSED  002. track_add and track_get (matching timestamps)
+PASSED  003. track_add with nonincreasing timestamps
+PASSED  004. track_size
+PASSED  005. track_length (non-empty)
+PASSED  006. track_length (empty track)
+PASSED  007. track_get interpolated points
+PASSED  008. track_get out of bounds (too early)
+PASSED  009. track_for_each
+
+           Unit Tests for Basic Functions (50 points): 50 points
+
+           Unit Tests for track_merge (25 points)
+PASSED  010. Disjoint tracks
+PASSED  011. Overlap but distinct timestamps
+PASSED  012. Duplicate trackpoints
+PASSED  013. Conflicting trackpoints
+
+           Unit Tests for track_merge (25 points): 25 points
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions)
+PASSED  014. track_add and track_get
+PASSED  015. track_get interpolated points
+PASSED  016. track_get out of bounds (too early)
+PASSED  017. track_merge: disjoint tracks
+PASSED  018. track_merge: overlap but distinct timestamps
+PASSED  019. track_merge: duplicate trackpoints
+PASSED  020. track_merge: conflicting trackpoints
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions): 25 points
+
+           Unit Tests for track_closest_approach
+PASSED  021. track_closest_approach
+PASSED  022. valgrind
+
+           Unit Tests for track_closest_approach: 2 of 2 tests passed
+
+           GPS Executable
+PASSED  023. -combine
+PASSED  024. -closest
+PASSED  025. -combine with valgrind
+PASSED  026. -closest with valgrind
+
+           GPS Executable: 4 of 4 tests passed
+
+           Invalid Inputs
+PASSED  027. No arguments
+PASSED  028. Missing filename
+PASSED  029. File not found
+PASSED  030. Latitude out of range
+PASSED  031. Invalid longitude
+PASSED  032. Missing timestamp
+PASSED  033. Extra whitespace
+PASSED  034. EOF after longitude
+
+           Invalid Inputs: 8 of 8 tests passed
+
+           Timing
+1c1,2
+< PASS
+---
+> FAIL t035: -linear 160 317363 1983.518750>1000.000000
+> FAIL t035: -linear 640 4955603 7743.129687>1000.000000
+Error: STDOUT differs from expected
+FAILED  035. track_merge
+
+           Timing: 0 of 1 tests passed
+
+               Deductions for Violating Specification (0 => no violation)
+
+End of Public Script
+
+ Total score at first checkpoint: 100
+ 14 of  15 Additional tests passed for GPS
+
+           Possible Deductions (assessed later as appropriate)
+              -100 Hard-coding to defeat autograder
+               -10 Deficient style (comments, identifiers, formatting, ...)
+                -5 Does not make
+                -5 Makefile missing
+                -5 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+
+***** Checking log file *****
+Estimate: ESTIMATE of time to complete assignment: 25 hours
+Total: 39:00 TOTAL time spent
+
+***** Checking makefile *****
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/testit 3 GPS
+/home/classes/cs223/Hwk3/test.GPS
+Copying location.c
+Copying location.h
+Copying more_math.c
+Copying more_math.h
+Copying track.h
+Copying trackpoint.c
+Copying trackpoint.h
+Overwriting modified required file track_unit.c
+Executing /home/classes/cs223/Hwk3/test.GPS
+
+Public test script for GPS (09/30/2021)
+
+***** Checking for warning messages *****
+Making -B ./GPS TrackUnit
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o more_math.o more_math.c
+gcc -Wall -std=c99 -pedantic -g   -c -o location.o location.c
+gcc -Wall -std=c99 -pedantic -g   -c -o trackpoint.o trackpoint.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_closest_approach’:
+track.c:655:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  655 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:656:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  656 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:665:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  665 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:707:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  707 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:708:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  708 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:717:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  717 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:595:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  595 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g -O3 GPS.o more_math.o location.o trackpoint.o track.o -lm
+gcc -Wall -std=c99 -pedantic -g   -c -o track_unit.o track_unit.c
+gcc -o TrackUnit -Wall -std=c99 -pedantic -g track_unit.o more_math.o location.o trackpoint.o track.o -lm
+makewarn: warning messages from -std=c11 -pedantic -Wall
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type one of the following commands
+depending on whether the file /c/cs223/hw3/Tests/tIJ is executable or not
+     /c/cs223/hw3/Tests/tIJ
+     ./GPS < /c/cs223/hw3/Tests/tIJ
+The answer expected is in /c/cs223/hw3/Tests/tIJ.out.
+
+
+           Unit Tests for Basic Functions (50 points)
+PASSED  001. track_create and track_destroy
+PASSED  002. track_add and track_get (matching timestamps)
+PASSED  003. track_add with nonincreasing timestamps
+PASSED  004. track_size
+PASSED  005. track_length (non-empty)
+PASSED  006. track_length (empty track)
+PASSED  007. track_get interpolated points
+PASSED  008. track_get out of bounds (too early)
+PASSED  009. track_for_each
+
+           Unit Tests for Basic Functions (50 points): 50 points
+
+           Unit Tests for track_merge (25 points)
+PASSED  010. Disjoint tracks
+PASSED  011. Overlap but distinct timestamps
+PASSED  012. Duplicate trackpoints
+PASSED  013. Conflicting trackpoints
+
+           Unit Tests for track_merge (25 points): 25 points
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions)
+PASSED  014. track_add and track_get
+PASSED  015. track_get interpolated points
+PASSED  016. track_get out of bounds (too early)
+PASSED  017. track_merge: disjoint tracks
+PASSED  018. track_merge: overlap but distinct timestamps
+PASSED  019. track_merge: duplicate trackpoints
+PASSED  020. track_merge: conflicting trackpoints
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions): 25 points
+
+           Unit Tests for track_closest_approach
+PASSED  021. track_closest_approach
+PASSED  022. valgrind
+
+           Unit Tests for track_closest_approach: 2 of 2 tests passed
+
+           GPS Executable
+PASSED  023. -combine
+PASSED  024. -closest
+PASSED  025. -combine with valgrind
+PASSED  026. -closest with valgrind
+
+           GPS Executable: 4 of 4 tests passed
+
+           Invalid Inputs
+PASSED  027. No arguments
+PASSED  028. Missing filename
+PASSED  029. File not found
+PASSED  030. Latitude out of range
+PASSED  031. Invalid longitude
+PASSED  032. Missing timestamp
+PASSED  033. Extra whitespace
+PASSED  034. EOF after longitude
+
+           Invalid Inputs: 8 of 8 tests passed
+
+           Timing
+1c1,3
+< PASS
+---
+> FAIL t035: -linear 40 47320 1183.000000>1000.000000
+> FAIL t035: -linear 160 687880 4299.250000>1000.000000
+> FAIL t035: -linear 640 10738120 16778.312500>1000.000000
+Error: STDOUT differs from expected
+FAILED  035. track_merge
+
+           Timing: 0 of 1 tests passed
+
+               Deductions for Violating Specification (0 => no violation)
+
+End of Public Script
+
+ Total score at first checkpoint: 100
+ 14 of  15 Additional tests passed for GPS
+
+           Possible Deductions (assessed later as appropriate)
+              -100 Hard-coding to defeat autograder
+               -10 Deficient style (comments, identifiers, formatting, ...)
+                -5 Does not make
+                -5 Makefile missing
+                -5 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+
+***** Checking log file *****
+Estimate: ESTIMATE of time to complete assignment: 25 hours
+Total: 39:00 TOTAL time spent
+
+***** Checking makefile *****
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/testit 3 GPS
+/home/classes/cs223/Hwk3/test.GPS
+Copying location.c
+Copying location.h
+Copying more_math.c
+Copying more_math.h
+Copying track.h
+Copying trackpoint.c
+Copying trackpoint.h
+Overwriting modified required file track_unit.c
+Executing /home/classes/cs223/Hwk3/test.GPS
+
+Public test script for GPS (09/30/2021)
+
+***** Checking for warning messages *****
+Making -B ./GPS TrackUnit
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o more_math.o more_math.c
+gcc -Wall -std=c99 -pedantic -g   -c -o location.o location.c
+gcc -Wall -std=c99 -pedantic -g   -c -o trackpoint.o trackpoint.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_closest_approach’:
+track.c:655:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  655 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:656:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  656 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:665:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  665 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:707:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  707 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:708:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  708 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:717:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  717 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:595:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  595 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -O3 GPS.o more_math.o location.o trackpoint.o track.o -lm
+gcc -Wall -std=c99 -pedantic -g   -c -o track_unit.o track_unit.c
+gcc -o TrackUnit -Wall -std=c99 -pedantic -g track_unit.o more_math.o location.o trackpoint.o track.o -lm
+makewarn: warning messages from -std=c11 -pedantic -Wall
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type one of the following commands
+depending on whether the file /c/cs223/hw3/Tests/tIJ is executable or not
+     /c/cs223/hw3/Tests/tIJ
+     ./GPS < /c/cs223/hw3/Tests/tIJ
+The answer expected is in /c/cs223/hw3/Tests/tIJ.out.
+
+
+           Unit Tests for Basic Functions (50 points)
+PASSED  001. track_create and track_destroy
+PASSED  002. track_add and track_get (matching timestamps)
+PASSED  003. track_add with nonincreasing timestamps
+PASSED  004. track_size
+PASSED  005. track_length (non-empty)
+PASSED  006. track_length (empty track)
+PASSED  007. track_get interpolated points
+PASSED  008. track_get out of bounds (too early)
+PASSED  009. track_for_each
+
+           Unit Tests for Basic Functions (50 points): 50 points
+
+           Unit Tests for track_merge (25 points)
+PASSED  010. Disjoint tracks
+PASSED  011. Overlap but distinct timestamps
+PASSED  012. Duplicate trackpoints
+PASSED  013. Conflicting trackpoints
+
+           Unit Tests for track_merge (25 points): 25 points
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions)
+PASSED  014. track_add and track_get
+PASSED  015. track_get interpolated points
+PASSED  016. track_get out of bounds (too early)
+PASSED  017. track_merge: disjoint tracks
+PASSED  018. track_merge: overlap but distinct timestamps
+PASSED  019. track_merge: duplicate trackpoints
+PASSED  020. track_merge: conflicting trackpoints
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions): 25 points
+
+           Unit Tests for track_closest_approach
+PASSED  021. track_closest_approach
+PASSED  022. valgrind
+
+           Unit Tests for track_closest_approach: 2 of 2 tests passed
+
+           GPS Executable
+PASSED  023. -combine
+PASSED  024. -closest
+PASSED  025. -combine with valgrind
+PASSED  026. -closest with valgrind
+
+           GPS Executable: 4 of 4 tests passed
+
+           Invalid Inputs
+PASSED  027. No arguments
+PASSED  028. Missing filename
+PASSED  029. File not found
+PASSED  030. Latitude out of range
+PASSED  031. Invalid longitude
+PASSED  032. Missing timestamp
+PASSED  033. Extra whitespace
+PASSED  034. EOF after longitude
+
+           Invalid Inputs: 8 of 8 tests passed
+
+           Timing
+1c1,3
+< PASS
+---
+> FAIL t035: -linear 40 47320 1183.000000>1000.000000
+> FAIL t035: -linear 160 687880 4299.250000>1000.000000
+> FAIL t035: -linear 640 10738120 16778.312500>1000.000000
+Error: STDOUT differs from expected
+FAILED  035. track_merge
+
+           Timing: 0 of 1 tests passed
+
+               Deductions for Violating Specification (0 => no violation)
+
+End of Public Script
+
+ Total score at first checkpoint: 100
+ 14 of  15 Additional tests passed for GPS
+
+           Possible Deductions (assessed later as appropriate)
+              -100 Hard-coding to defeat autograder
+               -10 Deficient style (comments, identifiers, formatting, ...)
+                -5 Does not make
+                -5 Makefile missing
+                -5 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+
+***** Checking log file *****
+Estimate: ESTIMATE of time to complete assignment: 25 hours
+Total: 39:00 TOTAL time spent
+
+***** Checking makefile *****
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/testit 3 GPS
+/home/classes/cs223/Hwk3/test.GPS
+Copying location.c
+Copying location.h
+Copying more_math.c
+Copying more_math.h
+Copying track.h
+Copying trackpoint.c
+Copying trackpoint.h
+Overwriting modified required file track_unit.c
+Executing /home/classes/cs223/Hwk3/test.GPS
+
+Public test script for GPS (09/30/2021)
+
+***** Checking for warning messages *****
+Making -B ./GPS TrackUnit
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o more_math.o more_math.c
+gcc -Wall -std=c99 -pedantic -g   -c -o location.o location.c
+gcc -Wall -std=c99 -pedantic -g   -c -o trackpoint.o trackpoint.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_closest_approach’:
+track.c:655:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  655 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:656:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  656 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:665:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  665 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:707:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  707 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:708:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  708 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:717:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  717 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:595:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  595 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+gcc -Wall -std=c99 -pedantic -g   -c -o track_unit.o track_unit.c
+gcc -o TrackUnit -Wall -std=c99 -pedantic -g track_unit.o more_math.o location.o trackpoint.o track.o -lm
+makewarn: warning messages from -std=c11 -pedantic -Wall
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type one of the following commands
+depending on whether the file /c/cs223/hw3/Tests/tIJ is executable or not
+     /c/cs223/hw3/Tests/tIJ
+     ./GPS < /c/cs223/hw3/Tests/tIJ
+The answer expected is in /c/cs223/hw3/Tests/tIJ.out.
+
+
+           Unit Tests for Basic Functions (50 points)
+PASSED  001. track_create and track_destroy
+PASSED  002. track_add and track_get (matching timestamps)
+PASSED  003. track_add with nonincreasing timestamps
+PASSED  004. track_size
+PASSED  005. track_length (non-empty)
+PASSED  006. track_length (empty track)
+PASSED  007. track_get interpolated points
+PASSED  008. track_get out of bounds (too early)
+PASSED  009. track_for_each
+
+           Unit Tests for Basic Functions (50 points): 50 points
+
+           Unit Tests for track_merge (25 points)
+PASSED  010. Disjoint tracks
+PASSED  011. Overlap but distinct timestamps
+PASSED  012. Duplicate trackpoints
+PASSED  013. Conflicting trackpoints
+
+           Unit Tests for track_merge (25 points): 25 points
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions)
+PASSED  014. track_add and track_get
+PASSED  015. track_get interpolated points
+PASSED  016. track_get out of bounds (too early)
+PASSED  017. track_merge: disjoint tracks
+PASSED  018. track_merge: overlap but distinct timestamps
+PASSED  019. track_merge: duplicate trackpoints
+PASSED  020. track_merge: conflicting trackpoints
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions): 25 points
+
+           Unit Tests for track_closest_approach
+PASSED  021. track_closest_approach
+PASSED  022. valgrind
+
+           Unit Tests for track_closest_approach: 2 of 2 tests passed
+
+           GPS Executable
+PASSED  023. -combine
+PASSED  024. -closest
+PASSED  025. -combine with valgrind
+PASSED  026. -closest with valgrind
+
+           GPS Executable: 4 of 4 tests passed
+
+           Invalid Inputs
+PASSED  027. No arguments
+PASSED  028. Missing filename
+PASSED  029. File not found
+PASSED  030. Latitude out of range
+PASSED  031. Invalid longitude
+PASSED  032. Missing timestamp
+PASSED  033. Extra whitespace
+PASSED  034. EOF after longitude
+
+           Invalid Inputs: 8 of 8 tests passed
+
+           Timing
+1c1,3
+< PASS
+---
+> FAIL t035: -linear 40 47320 1183.000000>1000.000000
+> FAIL t035: -linear 160 687880 4299.250000>1000.000000
+> FAIL t035: -linear 640 10738120 16778.312500>1000.000000
+Error: STDOUT differs from expected
+FAILED  035. track_merge
+
+           Timing: 0 of 1 tests passed
+
+               Deductions for Violating Specification (0 => no violation)
+
+End of Public Script
+
+ Total score at first checkpoint: 100
+ 14 of  15 Additional tests passed for GPS
+
+           Possible Deductions (assessed later as appropriate)
+              -100 Hard-coding to defeat autograder
+               -10 Deficient style (comments, identifiers, formatting, ...)
+                -5 Does not make
+                -5 Makefile missing
+                -5 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+
+***** Checking log file *****
+Estimate: ESTIMATE of time to complete assignment: 25 hours
+Total: 39:00 TOTAL time spent
+
+***** Checking makefile *****
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/testit 3 GPS
+/home/classes/cs223/Hwk3/test.GPS
+Copying location.c
+Copying location.h
+Copying more_math.c
+Copying more_math.h
+Copying track.h
+Copying trackpoint.c
+Copying trackpoint.h
+Overwriting modified required file track_unit.c
+Executing /home/classes/cs223/Hwk3/test.GPS
+
+Public test script for GPS (09/30/2021)
+
+***** Checking for warning messages *****
+Making -B ./GPS TrackUnit
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o more_math.o more_math.c
+gcc -Wall -std=c99 -pedantic -g   -c -o location.o location.c
+gcc -Wall -std=c99 -pedantic -g   -c -o trackpoint.o trackpoint.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:616:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  616 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:617:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  617 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:626:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  626 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:668:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  668 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:669:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  669 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:678:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  678 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:556:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  556 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+gcc -Wall -std=c99 -pedantic -g   -c -o track_unit.o track_unit.c
+gcc -o TrackUnit -Wall -std=c99 -pedantic -g track_unit.o more_math.o location.o trackpoint.o track.o -lm
+makewarn: warning messages from -std=c11 -pedantic -Wall
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type one of the following commands
+depending on whether the file /c/cs223/hw3/Tests/tIJ is executable or not
+     /c/cs223/hw3/Tests/tIJ
+     ./GPS < /c/cs223/hw3/Tests/tIJ
+The answer expected is in /c/cs223/hw3/Tests/tIJ.out.
+
+
+           Unit Tests for Basic Functions (50 points)
+PASSED  001. track_create and track_destroy
+PASSED  002. track_add and track_get (matching timestamps)
+PASSED  003. track_add with nonincreasing timestamps
+PASSED  004. track_size
+PASSED  005. track_length (non-empty)
+PASSED  006. track_length (empty track)
+PASSED  007. track_get interpolated points
+PASSED  008. track_get out of bounds (too early)
+PASSED  009. track_for_each
+
+           Unit Tests for Basic Functions (50 points): 50 points
+
+           Unit Tests for track_merge (25 points)
+PASSED  010. Disjoint tracks
+PASSED  011. Overlap but distinct timestamps
+PASSED  012. Duplicate trackpoints
+PASSED  013. Conflicting trackpoints
+
+           Unit Tests for track_merge (25 points): 25 points
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions)
+PASSED  014. track_add and track_get
+PASSED  015. track_get interpolated points
+PASSED  016. track_get out of bounds (too early)
+PASSED  017. track_merge: disjoint tracks
+PASSED  018. track_merge: overlap but distinct timestamps
+PASSED  019. track_merge: duplicate trackpoints
+PASSED  020. track_merge: conflicting trackpoints
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions): 25 points
+
+           Unit Tests for track_closest_approach
+PASSED  021. track_closest_approach
+PASSED  022. valgrind
+
+           Unit Tests for track_closest_approach: 2 of 2 tests passed
+
+           GPS Executable
+PASSED  023. -combine
+PASSED  024. -closest
+PASSED  025. -combine with valgrind
+PASSED  026. -closest with valgrind
+
+           GPS Executable: 4 of 4 tests passed
+
+           Invalid Inputs
+PASSED  027. No arguments
+PASSED  028. Missing filename
+PASSED  029. File not found
+PASSED  030. Latitude out of range
+PASSED  031. Invalid longitude
+PASSED  032. Missing timestamp
+PASSED  033. Extra whitespace
+PASSED  034. EOF after longitude
+
+           Invalid Inputs: 8 of 8 tests passed
+
+           Timing
+1c1,3
+< PASS
+---
+> FAIL t035: -linear 40 47299 1182.475000>1000.000000
+> FAIL t035: -linear 160 687859 4299.118750>1000.000000
+> FAIL t035: -linear 640 10738099 16778.279687>1000.000000
+Error: STDOUT differs from expected
+FAILED  035. track_merge
+
+           Timing: 0 of 1 tests passed
+
+               Deductions for Violating Specification (0 => no violation)
+
+End of Public Script
+
+ Total score at first checkpoint: 100
+ 14 of  15 Additional tests passed for GPS
+
+           Possible Deductions (assessed later as appropriate)
+              -100 Hard-coding to defeat autograder
+               -10 Deficient style (comments, identifiers, formatting, ...)
+                -5 Does not make
+                -5 Makefile missing
+                -5 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+
+***** Checking log file *****
+Estimate: ESTIMATE of time to complete assignment: 25 hours
+Total: 39:00 TOTAL time spent
+
+***** Checking makefile *****
+[mjw223@dolphin 3_GPSTrack]$ ls
+closest_bottom.in    location.c   track_malloc.c  vgcore.129317   vgcore.2915188
+closest_top.in       location.h   track_new.c     vgcore.129331   vgcore.3021588
+commandline.c        location.o   track.o         vgcore.1305222  vgcore.3391840
+Debugging Add Point  log          trackpoint.c    vgcore.1305974  vgcore.3392225
+glenn                makefile     trackpoint.h    vgcore.1306716  vgcore.3453192
+GPS                  more_math.c  trackpoint.o    vgcore.1313807  vgcore.706312
+GPS.c                more_math.h  TrackUnit       vgcore.189813   vgcore.706428
+GPS.o                more_math.o  track_unit.c    vgcore.206084
+input1.in            track.c      track_unit.o    vgcore.2297439
+input2.in            track.h      vgcore.127672   vgcore.2297458
+[mjw223@dolphin 3_GPSTrack]$ ls
+closest_bottom.in    location.c   track_malloc.c  vgcore.129317   vgcore.2915188
+closest_top.in       location.h   track_new.c     vgcore.129331   vgcore.3021588
+commandline.c        location.o   track.o         vgcore.1305222  vgcore.3391840
+Debugging Add Point  log          trackpoint.c    vgcore.1305974  vgcore.3392225
+glenn                makefile     trackpoint.h    vgcore.1306716  vgcore.3453192
+GPS                  more_math.c  trackpoint.o    vgcore.1313807  vgcore.706312
+GPS.c                more_math.h  TrackUnit       vgcore.189813   vgcore.706428
+GPS.o                more_math.o  track_unit.c    vgcore.206084
+input1.in            track.c      track_unit.o    vgcore.2297439
+input2.in            track.h      vgcore.127672   vgcore.2297458
+[mjw223@dolphin 3_GPSTrack]$ cd ..
+[mjw223@dolphin projects]$ ls
+0_HelloWorld  1_C_StatementCounter  2_TSP  3_GPSTrack  track.c  track_unit.c
+[mjw223@dolphin projects]$ cd 3_GPSTrack/
+[mjw223@dolphin 3_GPSTrack]$ ls
+closest_bottom.in    location.c   track_malloc.c  vgcore.129317   vgcore.2915188
+closest_top.in       location.h   track_new.c     vgcore.129331   vgcore.3021588
+commandline.c        location.o   track.o         vgcore.1305222  vgcore.3391840
+Debugging Add Point  log          trackpoint.c    vgcore.1305974  vgcore.3392225
+glenn                makefile     trackpoint.h    vgcore.1306716  vgcore.3453192
+GPS                  more_math.c  trackpoint.o    vgcore.1313807  vgcore.706312
+GPS.c                more_math.h  TrackUnit       vgcore.189813   vgcore.706428
+GPS.o                more_math.o  track_unit.c    vgcore.206084
+input1.in            track.c      track_unit.o    vgcore.2297439
+input2.in            track.h      vgcore.127672   vgcore.2297458
+[mjw223@dolphin 3_GPSTrack]$ ls
+closest_bottom.in    location.c   track_malloc.c  vgcore.129317   vgcore.2915188
+closest_top.in       location.h   track_new.c     vgcore.129331   vgcore.3021588
+commandline.c        location.o   track.o         vgcore.1305222  vgcore.3391840
+Debugging Add Point  log          trackpoint.c    vgcore.1305974  vgcore.3392225
+glenn                makefile     trackpoint.h    vgcore.1306716  vgcore.3453192
+GPS                  more_math.c  trackpoint.o    vgcore.1313807  vgcore.706312
+GPS.c                more_math.h  TrackUnit       vgcore.189813   vgcore.706428
+GPS.o                more_math.o  track_unit.c    vgcore.206084
+input1.in            track.c      track_unit.o    vgcore.2297439
+input2.in            track.h      vgcore.127672   vgcore.2297458
+[mjw223@dolphin 3_GPSTrack]$ ls
+closest_bottom.in    location.c   track_malloc.c  vgcore.129317   vgcore.2915188
+closest_top.in       location.h   track_new.c     vgcore.129331   vgcore.3021588
+commandline.c        location.o   track.o         vgcore.1305222  vgcore.3391840
+Debugging Add Point  log          trackpoint.c    vgcore.1305974  vgcore.3392225
+glenn                makefile     trackpoint.h    vgcore.1306716  vgcore.3453192
+GPS                  more_math.c  trackpoint.o    vgcore.1313807  vgcore.706312
+GPS.c                more_math.h  TrackUnit       vgcore.189813   vgcore.706428
+GPS.o                more_math.o  track_unit.c    vgcore.206084
+input1.in            track.c      track_unit.o    vgcore.2297439
+input2.in            track.h      vgcore.127672   vgcore.2297458
+[mjw223@dolphin 3_GPSTrack]$ pwd
+/home/accts/mjw223/cs223/projects/projects/3_GPSTrack
+[mjw223@dolphin 3_GPSTrack]$ ls
+closest_bottom.in    location.c   track_malloc.c  vgcore.129317   vgcore.2915188
+closest_top.in       location.h   track_new.c     vgcore.129331   vgcore.3021588
+commandline.c        location.o   track.o         vgcore.1305222  vgcore.3391840
+Debugging Add Point  log          trackpoint.c    vgcore.1305974  vgcore.3392225
+glenn                makefile     trackpoint.h    vgcore.1306716  vgcore.3453192
+GPS                  more_math.c  trackpoint.o    vgcore.1313807  vgcore.706312
+GPS.c                more_math.h  TrackUnit       vgcore.189813   vgcore.706428
+GPS.o                more_math.o  track_unit.c    vgcore.206084
+input1.in            track.c      track_unit.o    vgcore.2297439
+input2.in            track.h      vgcore.127672   vgcore.2297458
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in fd.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closes input1.in input2.in fd.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS input1.in input2.in fd.in
+Could not open fd.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS input1.in fd.in
+Could not open fd.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest -closest
+Could not open -closest
+[mjw223@dolphin 3_GPSTrack]$ ./GPS
+missing files
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:565:36: error: expected identifier before ‘=’ token
+  565 |   track_node *t2end = track2->tail.=prev;
+      |                                    ^
+track.c:565:37: error: ‘prev’ undeclared (first use in this function)
+  565 |   track_node *t2end = track2->tail.=prev;
+      |                                     ^~~~
+track.c:565:37: note: each undeclared identifier is reported only once for each function it appears in
+track.c:635:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  635 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:636:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  636 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:645:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  645 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:687:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  687 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:688:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  688 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:697:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  697 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:556:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  556 |   double min_time = -1;
+      |          ^~~~~~~~
+make: *** [<builtin>: track.o] Error 1
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:635:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  635 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:636:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  636 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:645:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  645 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:687:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  687 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:688:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  688 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:697:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  697 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:556:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  556 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/testit 3 GPS
+/home/classes/cs223/Hwk3/test.GPS
+Copying location.c
+Copying location.h
+Copying more_math.c
+Copying more_math.h
+Copying track.h
+Copying trackpoint.c
+Copying trackpoint.h
+Overwriting modified required file track_unit.c
+Executing /home/classes/cs223/Hwk3/test.GPS
+
+Public test script for GPS (09/30/2021)
+
+***** Checking for warning messages *****
+Making -B ./GPS TrackUnit
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o more_math.o more_math.c
+gcc -Wall -std=c99 -pedantic -g   -c -o location.o location.c
+gcc -Wall -std=c99 -pedantic -g   -c -o trackpoint.o trackpoint.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:635:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  635 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:636:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  636 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:645:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  645 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:687:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  687 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:688:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  688 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:697:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  697 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:556:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  556 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+gcc -Wall -std=c99 -pedantic -g   -c -o track_unit.o track_unit.c
+gcc -o TrackUnit -Wall -std=c99 -pedantic -g track_unit.o more_math.o location.o trackpoint.o track.o -lm
+makewarn: warning messages from -std=c11 -pedantic -Wall
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type one of the following commands
+depending on whether the file /c/cs223/hw3/Tests/tIJ is executable or not
+     /c/cs223/hw3/Tests/tIJ
+     ./GPS < /c/cs223/hw3/Tests/tIJ
+The answer expected is in /c/cs223/hw3/Tests/tIJ.out.
+
+
+           Unit Tests for Basic Functions (50 points)
+PASSED  001. track_create and track_destroy
+PASSED  002. track_add and track_get (matching timestamps)
+PASSED  003. track_add with nonincreasing timestamps
+PASSED  004. track_size
+PASSED  005. track_length (non-empty)
+PASSED  006. track_length (empty track)
+PASSED  007. track_get interpolated points
+PASSED  008. track_get out of bounds (too early)
+PASSED  009. track_for_each
+
+           Unit Tests for Basic Functions (50 points): 50 points
+
+           Unit Tests for track_merge (25 points)
+PASSED  010. Disjoint tracks
+PASSED  011. Overlap but distinct timestamps
+PASSED  012. Duplicate trackpoints
+PASSED  013. Conflicting trackpoints
+
+           Unit Tests for track_merge (25 points): 25 points
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions)
+PASSED  014. track_add and track_get
+PASSED  015. track_get interpolated points
+PASSED  016. track_get out of bounds (too early)
+PASSED  017. track_merge: disjoint tracks
+PASSED  018. track_merge: overlap but distinct timestamps
+PASSED  019. track_merge: duplicate trackpoints
+PASSED  020. track_merge: conflicting trackpoints
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions): 25 points
+
+           Unit Tests for track_closest_approach
+PASSED  021. track_closest_approach
+PASSED  022. valgrind
+
+           Unit Tests for track_closest_approach: 2 of 2 tests passed
+
+           GPS Executable
+PASSED  023. -combine
+PASSED  024. -closest
+PASSED  025. -combine with valgrind
+PASSED  026. -closest with valgrind
+
+           GPS Executable: 4 of 4 tests passed
+
+           Invalid Inputs
+PASSED  027. No arguments
+PASSED  028. Missing filename
+PASSED  029. File not found
+PASSED  030. Latitude out of range
+PASSED  031. Invalid longitude
+PASSED  032. Missing timestamp
+PASSED  033. Extra whitespace
+PASSED  034. EOF after longitude
+
+           Invalid Inputs: 8 of 8 tests passed
+
+           Timing
+1c1,3
+< PASS
+---
+> FAIL t035: -linear 40 47299 1182.475000>1000.000000
+> FAIL t035: -linear 160 687859 4299.118750>1000.000000
+> FAIL t035: -linear 640 10738099 16778.279687>1000.000000
+Error: STDOUT differs from expected
+FAILED  035. track_merge
+
+           Timing: 0 of 1 tests passed
+
+               Deductions for Violating Specification (0 => no violation)
+
+End of Public Script
+
+ Total score at first checkpoint: 100
+ 14 of  15 Additional tests passed for GPS
+
+           Possible Deductions (assessed later as appropriate)
+              -100 Hard-coding to defeat autograder
+               -10 Deficient style (comments, identifiers, formatting, ...)
+                -5 Does not make
+                -5 Makefile missing
+                -5 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+
+***** Checking log file *****
+Estimate: ESTIMATE of time to complete assignment: 25 hours
+Total: 39:00 TOTAL time spent
+
+***** Checking makefile *****
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:428:19: warning: unused variable ‘nextinsrc’ [-Wunused-variable]
+  428 |       track_node *nextinsrc = srccurr->next;
+      |                   ^~~~~~~~~
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:658:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  658 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:659:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  659 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:668:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  668 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:710:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  710 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:711:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  711 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:720:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  720 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:579:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  579 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/submit 3 GPS.c track.c log makefile
+Copying GPS.c
+Copying track.c
+Copying log
+Copying makefile
+[mjw223@dolphin 3_GPSTrack]$ /c/cs223/bin/testit 3 GPS
+/home/classes/cs223/Hwk3/test.GPS
+Copying location.c
+Copying location.h
+Copying more_math.c
+Copying more_math.h
+Copying track.h
+Copying trackpoint.c
+Copying trackpoint.h
+Overwriting modified required file track_unit.c
+Executing /home/classes/cs223/Hwk3/test.GPS
+
+Public test script for GPS (09/30/2021)
+
+***** Checking for warning messages *****
+Making -B ./GPS TrackUnit
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o more_math.o more_math.c
+gcc -Wall -std=c99 -pedantic -g   -c -o location.o location.c
+gcc -Wall -std=c99 -pedantic -g   -c -o trackpoint.o trackpoint.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:428:19: warning: unused variable ‘nextinsrc’ [-Wunused-variable]
+  428 |       track_node *nextinsrc = srccurr->next;
+      |                   ^~~~~~~~~
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:658:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  658 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:659:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  659 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:668:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  668 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:710:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  710 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:711:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  711 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:720:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  720 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:579:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  579 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+gcc -Wall -std=c99 -pedantic -g   -c -o track_unit.o track_unit.c
+gcc -o TrackUnit -Wall -std=c99 -pedantic -g track_unit.o more_math.o location.o trackpoint.o track.o -lm
+makewarn: warning messages from -std=c11 -pedantic -Wall
+
+Each test is either passed or failed; there is no partial credit.
+
+To execute the test labelled IJ, type one of the following commands
+depending on whether the file /c/cs223/hw3/Tests/tIJ is executable or not
+     /c/cs223/hw3/Tests/tIJ
+     ./GPS < /c/cs223/hw3/Tests/tIJ
+The answer expected is in /c/cs223/hw3/Tests/tIJ.out.
+
+
+           Unit Tests for Basic Functions (50 points)
+PASSED  001. track_create and track_destroy
+PASSED  002. track_add and track_get (matching timestamps)
+PASSED  003. track_add with nonincreasing timestamps
+PASSED  004. track_size
+PASSED  005. track_length (non-empty)
+PASSED  006. track_length (empty track)
+PASSED  007. track_get interpolated points
+PASSED  008. track_get out of bounds (too early)
+PASSED  009. track_for_each
+
+           Unit Tests for Basic Functions (50 points): 50 points
+
+           Unit Tests for track_merge (25 points)
+PASSED  010. Disjoint tracks
+PASSED  011. Overlap but distinct timestamps
+PASSED  012. Duplicate trackpoints
+PASSED  013. Conflicting trackpoints
+
+           Unit Tests for track_merge (25 points): 25 points
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions)
+PASSED  014. track_add and track_get
+PASSED  015. track_get interpolated points
+PASSED  016. track_get out of bounds (too early)
+PASSED  017. track_merge: disjoint tracks
+PASSED  018. track_merge: overlap but distinct timestamps
+PASSED  019. track_merge: duplicate trackpoints
+PASSED  020. track_merge: conflicting trackpoints
+
+           Valgrind for Unit Tests (25 points; not awarded to do-nothing submissions): 25 points
+
+           Unit Tests for track_closest_approach
+PASSED  021. track_closest_approach
+PASSED  022. valgrind
+
+           Unit Tests for track_closest_approach: 2 of 2 tests passed
+
+           GPS Executable
+PASSED  023. -combine
+PASSED  024. -closest
+PASSED  025. -combine with valgrind
+PASSED  026. -closest with valgrind
+
+           GPS Executable: 4 of 4 tests passed
+
+           Invalid Inputs
+PASSED  027. No arguments
+PASSED  028. Missing filename
+PASSED  029. File not found
+PASSED  030. Latitude out of range
+PASSED  031. Invalid longitude
+PASSED  032. Missing timestamp
+PASSED  033. Extra whitespace
+PASSED  034. EOF after longitude
+
+           Invalid Inputs: 8 of 8 tests passed
+
+           Timing
+1c1,3
+< PASS
+---
+> FAIL t035: -linear 40 48259 1206.475000>1000.000000
+> FAIL t035: -linear 160 691699 4323.118750>1000.000000
+> FAIL t035: -linear 640 10753459 16802.279687>1000.000000
+Error: STDOUT differs from expected
+FAILED  035. track_merge
+
+           Timing: 0 of 1 tests passed
+
+               Deductions for Violating Specification (0 => no violation)
+
+End of Public Script
+
+ Total score at first checkpoint: 100
+ 14 of  15 Additional tests passed for GPS
+
+           Possible Deductions (assessed later as appropriate)
+              -100 Hard-coding to defeat autograder
+               -10 Deficient style (comments, identifiers, formatting, ...)
+                -5 Does not make
+                -5 Makefile missing
+                -5 Makefile incorrect
+                -1 Log file incorrectly named
+                -1 Log file lacks estimated time
+                -1 Log file lacks total time
+                -1 Log file lacks statement of major difficulties
+
+***** Checking log file *****
+Estimate: ESTIMATE of time to complete assignment: 25 hours
+Total: 39:00 TOTAL time spent
+
+***** Checking makefile *****
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: At top level:
+track.c:290:1: error: two or more data types in declaration specifiers
+  290 | void track_merge(track *dest, track *src)
+      | ^~~~
+track.c: In function ‘track_merge’:
+track.c:430:19: warning: unused variable ‘nextinsrc’ [-Wunused-variable]
+  430 |       track_node *nextinsrc = srccurr->next;
+      |                   ^~~~~~~~~
+track.c:292:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  292 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:660:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  660 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:661:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  661 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:670:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  670 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:712:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  712 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:713:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  713 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:722:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  722 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:581:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  581 |   double min_time = -1;
+      |          ^~~~~~~~
+make: *** [<builtin>: track.o] Error 1
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:428:19: warning: unused variable ‘nextinsrc’ [-Wunused-variable]
+  428 |       track_node *nextinsrc = srccurr->next;
+      |                   ^~~~~~~~~
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:657:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  657 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:658:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  658 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:667:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  667 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:709:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  709 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:710:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  710 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:719:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  719 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:578:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  578 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+Segmentation fault (core dumped)
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+Segmentation fault (core dumped)
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+Segmentation fault (core dumped)
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:428:19: warning: unused variable ‘nextinsrc’ [-Wunused-variable]
+  428 |       track_node *nextinsrc = srccurr->next;
+      |                   ^~~~~~~~~
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:660:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  660 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:661:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  661 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:670:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  670 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:712:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  712 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:713:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  713 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:722:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  722 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:581:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  581 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+testing
+testing
+Segmentation fault (core dumped)
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:428:19: warning: unused variable ‘nextinsrc’ [-Wunused-variable]
+  428 |       track_node *nextinsrc = srccurr->next;
+      |                   ^~~~~~~~~
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:658:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  658 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:659:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  659 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:668:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  668 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:710:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  710 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:711:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  711 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:720:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  720 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:578:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  578 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+Segmentation fault (core dumped)
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:428:19: warning: unused variable ‘nextinsrc’ [-Wunused-variable]
+  428 |       track_node *nextinsrc = srccurr->next;
+      |                   ^~~~~~~~~
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:659:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  659 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:660:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  660 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:669:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  669 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:711:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  711 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:712:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  712 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:721:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  721 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:578:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  578 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in \
+> ^C
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in \
+> ^C
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+testing
+Segmentation fault (core dumped)
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -Wall -std=c99 -pedantic -g   -c -o track.o track.c
+track.c: In function ‘track_get’:
+track.c:203:23: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  203 |       location *loc = trackpoint_get_location(curr->data);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:247:27: warning: implicit declaration of function ‘track_segment_get_location’; did you mean ‘trackpoint_get_location’? [-Wimplicit-function-declaration]
+  247 |   location *interpolate = track_segment_get_location(seg, time);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                           trackpoint_get_location
+track.c:247:27: warning: initialization of ‘location *’ {aka ‘struct _location *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+track.c: In function ‘track_merge’:
+track.c:428:19: warning: unused variable ‘nextinsrc’ [-Wunused-variable]
+  428 |       track_node *nextinsrc = srccurr->next;
+      |                   ^~~~~~~~~
+track.c:290:15: warning: variable ‘earliestdest’ set but not used [-Wunused-but-set-variable]
+  290 |   track_node *earliestdest = dest->head.next;
+      |               ^~~~~~~~~~~~
+track.c: In function ‘track_closest_approach’:
+track.c:657:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  657 |       location *prev = trackpoint_get_location(curr2->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:658:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  658 |       location *intp = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:667:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  667 |       location *loc1 = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:709:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  709 |       location *prev = trackpoint_get_location(curr1->prev->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:710:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  710 |       location *intp = trackpoint_get_location(curr1->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:719:24: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  719 |       location *loc2 = trackpoint_get_location(curr2->data);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+track.c:578:10: warning: variable ‘min_time’ set but not used [-Wunused-but-set-variable]
+  578 |   double min_time = -1;
+      |          ^~~~~~~~
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+Segmentation fault (core dumped)
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+inf
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+inf
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+inf
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+inf
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+inf
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+inf
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+-23.590000 76.148000 10.000000
+-23.349000 76.236000 25.000000
+-23.306000 76.436000 37.000000
+-23.349000 76.623000 42.000000
+-23.480000 76.716000 48.000000
+-23.524000 76.864000 52.000000
+-23.460000 77.003000 58.000000
+-23.359000 77.030000 66.000000
+-23.241000 77.134000 71.000000
+-23.100000 77.353000 80.000000
+-23.142000 77.502000 90.000000
+-23.292000 77.523000 98.000000
+-23.397000 77.483000 106.000000
+-23.488000 77.620000 112.000000
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+-23.590000 76.148000 10.000000
+-23.349000 76.236000 25.000000
+-23.306000 76.436000 37.000000
+-23.349000 76.623000 42.000000
+-23.480000 76.716000 48.000000
+-23.524000 76.864000 52.000000
+-23.460000 77.003000 58.000000
+-23.359000 77.030000 66.000000
+-23.241000 77.134000 71.000000
+-23.100000 77.353000 80.000000
+-23.142000 77.502000 90.000000
+-23.292000 77.523000 98.000000
+-23.397000 77.483000 106.000000
+-23.488000 77.620000 112.000000
+-23.617000 77.595000 120.000000
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.i
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closet input1.in input2.i
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest inpu input2.i
+Could not open inpu
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest inpu inpu2.i
+Could not open inpu
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in inpu2.i
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in inpu2.i
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest inpu input2.i
+Could not open inpu
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.i
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.i
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.i
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.i
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in i
+[mjw223@dolphin 3_GPSTrack]$ 
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+hiinf
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closes^Cinput1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ make
+gcc -Wall -std=c99 -pedantic -g   -c -o GPS.o GPS.c
+gcc -o GPS -g GPS.o more_math.o location.o trackpoint.o track.o -lm
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+inf
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+-23.590000 76.148000 10.000000
+-23.349000 76.236000 25.000000
+-23.306000 76.436000 37.000000
+-23.349000 76.623000 42.000000
+-23.480000 76.716000 48.000000
+-23.524000 76.864000 52.000000
+-23.460000 77.003000 58.000000
+-23.359000 77.030000 66.000000
+-23.241000 77.134000 71.000000
+-23.100000 77.353000 80.000000
+-23.142000 77.502000 90.000000
+-23.292000 77.523000 98.000000
+-23.397000 77.483000 106.000000
+-23.488000 77.620000 112.000000
+[mjw223@dolphin 3_GPSTrack]$ make
+make: 'GPS' is up to date.
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+-23.590000 76.148000 10.000000
+-23.349000 76.236000 25.000000
+-23.306000 76.436000 37.000000
+-23.349000 76.623000 42.000000
+-23.480000 76.716000 48.000000
+-23.524000 76.864000 52.000000
+-23.460000 77.003000 58.000000
+-23.359000 77.030000 66.000000
+-23.241000 77.134000 71.000000
+-23.100000 77.353000 80.000000
+-23.142000 77.502000 90.000000
+-23.292000 77.523000 98.000000
+-23.397000 77.483000 106.000000
+-23.488000 77.620000 112.000000
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+inf
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -combine input1.in input2.in 
+-23.590000 76.148000 10.000000
+-23.349000 76.236000 25.000000
+-23.306000 76.436000 37.000000
+-23.349000 76.623000 42.000000
+-23.480000 76.716000 48.000000
+-23.524000 76.864000 52.000000
+-23.460000 77.003000 58.000000
+-23.359000 77.030000 66.000000
+-23.241000 77.134000 71.000000
+-23.194000 77.266000 75.000000
+-23.100000 77.353000 80.000000
+-23.142000 77.502000 90.000000
+-23.292000 77.523000 98.000000
+-23.397000 77.483000 106.000000
+-23.488000 77.620000 112.000000
+-23.617000 77.595000 120.000000
+[mjw223@dolphin 3_GPSTrack]$ ./GPS -closest input1.in input2.in 
+0
+[mjw223@dolphin 3_GPSTrack]$ 

@@ -1,0 +1,22 @@
+ESTIMATE of time to complete assignment: 6 hours
+
+      Time     Time
+Date  Started  Spent Work completed
+----  -------  ----  --------------
+9/15  3:30pm  1:00  read assignment, wrote out some ideas and figured out how to process input 
+
+9/15  4:30pm  1:00  wrote and tested code for given and
+
+9/15  5:00PM  0:30  ran and debugged code on multiple unit tests
+
+9/15  5:30PM  2:30  got the long tests wrong so made memory O(1), got two more tests wrong so debugged like crazy
+
+9/15  10:00PM 1:30 Ironing out the last bugs to solve case #19
+
+
+
+
+I discussed my solution with: N/A
+
+I did enjoy getting to know C a little better by figuring out to parse the input and how to format
+everything. I do think my solution had a ton of if statements though. My major difficulty was that the implementation for this was really hard! I think considering for the edge cases was also tricky. 

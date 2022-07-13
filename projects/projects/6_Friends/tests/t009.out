@@ -1,0 +1,4 @@
+A, B have mutual friends C F
+A, C have mutual friends B
+B, D have mutual friends C E
+B, E have mutual friends D F

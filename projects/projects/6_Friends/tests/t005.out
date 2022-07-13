@@ -1,0 +1,12 @@
+A, B have minimum path length 1
+B, C have minimum path length 1
+A, C have minimum path length 1
+A, F have minimum path length 1
+F, B have minimum path length 1
+F, E have minimum path length 1
+E, D have minimum path length 1
+B, D have minimum path length 1
+C, D have minimum path length 1
+D, G have minimum path length 1
+G, E have minimum path length 1
+B, E have minimum path length 1

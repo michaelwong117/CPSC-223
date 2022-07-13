@@ -1,0 +1,39 @@
+ESTIMATE of time to complete assignment: 35 hours
+
+      Time     Time
+Date  Started  Spent Work completed
+----  -------  ----  --------------
+11/25 8:00 pm  2:00  read assignment and looked carefully at the example cases to better undrestand the problem
+11/27 4:00 pm  3:00  processing input, started implementing pointset.c
+11/29 2:00 pm  2:00  attending virtual office hours, spent time working out valgrind errors for early pointset
+                     cases
+11/30 7:00 pm  2:00  fixed several valgrind errors, begin implementation of functions alongside pointset
+12/01 2:00 pm  3:00  debugging functions, covering multiple cases 
+12/02 7:00 pm  4:00  worked out pointer logic of input, begin initial implementation of pointset
+                     get ready for testit on zoo
+12/03 1:00 pm  4:00  fixed most of cases 8,9,10,11, 
+                     worked out valgrind errors for functions, began implementation of actual program
+12/03 7:00 pm  3:00  attended office hours at HLH to try to fix my last valgrind errors
+                     implemented and partly debugged main function
+12/04 9:00 am  1:00  taking an extra day to fix up last valgrind errors, fixed for example cases
+12/04 1:00 pm  3:00  making sure that I handle edge cases, fix segfault error
+12/05 2:00 pm  5:00  working on segfault error and handling edge cases
+12/05 8:00 pm  3:00  using gdb finally fixed my remove function and also found source of error for test timing
+                     successfully debugged
+               ----
+               35:00 TOTAL time spent
+
+DISCUSSION
+
+Debugging pointset.c was extremely difficult because I had to learn how to 
+track and trace valgrind errors. I had to manually keep in mind all the places
+where I wasn't freeing (or in many cases, double freeing), which is especially
+difficult given the size of the program and the many cases and functions I was handling.
+Another problem was figuring out the pointer logic: oftentimes it was confusing and hard
+to wrap my head around. For pointset, it really helped to write out a detailed picture
+of the nodes on pen and paper and then translate that image into code. For pointset,
+as well, debugging the actual code proved difficult. I think once I had a working implementation
+of blotto it really helped me speed along since I could use the example cases to check my code. 
+I think overall, I learned a lot about valgrind and debugging and also had a mini mental-breakdown.
+Finally, implementing the edge cases and working out the casework was very tricky. I really had
+to write out the different cases and unit test my code as I went to make sure my ideas were good.

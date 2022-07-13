@@ -1,0 +1,108 @@
+Maine,New Hampshire
+New Hampshire,Vermont
+Vermont,Massachusetts
+New Hampshire,Massachusetts
+Connecticut,Massachusetts
+Connecticut,Rhode Island
+Rhode Island,Massachusetts
+Vermont,New York
+New York,Massachusetts
+New York,Connecticut
+New York,Rhode Island
+New York,New Jersey
+New York,Pennsylvania
+Pennsylvania,Ohio
+Pennsylvania,Maryland
+Maryland,Virginia
+Pennsylvania,West Virginia
+Pennsylvania,Delaware
+Pennsylvania,New Jersey
+New Jersey,Delaware
+Delaware,Maryland
+Maryland,West Virginia
+West Virginia,Virginia
+Virginia,North Carolina
+South Carolina,North Carolina
+Georgia,South Carolina
+Florida,Georgia
+Alabama,Florida
+Mississippi,Alabama
+Alabama,Georgia
+Georgia,North Carolina
+Tennessee,Mississippi
+Tennessee,Alabama
+Tennessee,Georgia
+Tennessee,North Carolina
+Tennessee,Kentucky
+Kentucky,Virginia
+Kentucky,West Virginia
+Ohio,Kentucky
+Ohio,Indiana
+Indiana,Kentucky
+Kentucky,Illinois
+Illinois,Wisconsin
+Illinois,Indiana
+Wisconsin,Michigan
+Michigan,Ohio
+Michigan,Indiana
+Texas,Louisiana
+Louisiana,Arkansas
+Louisiana,Mississippi
+Arkansas,Missouri
+Arkansas,Mississippi
+Texas,Arkansas
+Missouri,Tennessee
+Tennessee,Arkansas
+Tennessee,Virginia
+Ohio,West Virginia
+Missouri,Oklahoma
+Arkansas,Oklahoma
+Missouri,Kentucky
+Missouri,Illinois
+Kansas,Missouri
+Illinois,Iowa
+Missouri,Nebraska
+Nebraska,Iowa
+Iowa,Missouri
+Iowa,Wisconsin
+Iowa,South Dakota
+Iowa,Minnesota
+Minnesota,Wisconsin
+Minnesota,South Dakota
+North Dakota,Minnesota
+North Dakota,South Dakota
+South Dakota,Nebraska
+Nebraska,Kansas
+Kansas,Oklahoma
+Texas,Oklahoma
+Texas,New Mexico
+Oklahoma,Colorado
+Colorado,New Mexico
+Oklahoma,New Mexico
+Wyoming,South Dakota
+Wyoming,Colorado
+Wyoming,Montana
+Montana,North Dakota
+Montana,South Dakota
+Wyoming,Nebraska
+Colorado,Kansas
+Colorado,Utah
+Colorado,Arizona
+Colorado,Nebraska
+Arizona,Utah
+New Mexico,Utah
+Arizona,New Mexico
+Arizona,California
+California,Nevada
+Nevada,Utah
+Idaho,Utah
+Idaho,Nevada
+Nevada,Arizona
+Nevada,Oregon
+Montana,Idaho
+Idaho,Wyoming
+Wyoming,Utah
+Idaho,Washington
+Washington,Oregon
+Oregon,Idaho
+Oregon,California

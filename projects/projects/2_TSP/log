@@ -1,0 +1,24 @@
+ESTIMATE of time to complete assignment: ~25 hours
+
+      Time     Time
+Date  Started  Spent Work completed
+----  -------  ----  --------------
+
+9/26 4:30 pm 3:00 read assignment, wrote out some ideas and figured out how to process input 
+
+9/28 2:30pm  6:00  wrote and tested code for given and farthest
+
+9/29 4:30pm  6:00  spent most of the time debugging given and farthest, running on several test cases and creating my own edge cases
+
+9/29 10:30pm 2:00  got given and farthest to run for several cases, began writing pseudocode for exchange and thinking of ideas
+
+9/30  2:00pm 8:00  ran and debugged code on multiple unit tests, figuring out exchange adjacent and exchange any
+			 ----
+			 7:55  TOTAL time spent
+
+
+
+
+I discussed my solution with: N/A
+
+I did enjoy getting more familiar in C by figuring out how to parse the input and how to use structs and malloc to help me in my solution. My major difficulty was that the implementation for this was really hard! Especially figuring out what distances were affecting what, and how swapping would change those distances: I really had to work everything out on paper and visualize it. I had several wrong approaches and ideas about the exchange algorithm as well until I sat down and closely read the problem again (one of these being that any or adjacent would always both output the same thing!) I think considering for the edge cases was also tricky. There was SO much debugging. 

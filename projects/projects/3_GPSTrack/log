@@ -1,0 +1,47 @@
+ESTIMATE of time to complete assignment: 39 hours
+
+      Time     Time
+Date  Started  Spent Work completed
+----  -------  ----  --------------
+10/09 8:00 pm  2:00  read assignment and looked carefully at the example cases to better undrestand the problem
+10/11 4:00 pm  3:00  processing input, started implementing track.c with the help of location_list.c from bitbucket
+10/12 2:00 pm  4:00  attending virtual office hours, spent time working out valgrind errors for early TrackUnit
+                     cases
+10/12 7:00 pm  4:00  fixed several valgrind errors, begin implementation of track merge
+10/13 2:00 pm  3:00  debugging track merge, covering multiple cases 
+10/13 7:00 pm  4:00  worked out pointer logic of merge, begin initial implementation of GPS.c
+                     get ready for testit on zoo
+10/14 1:00 pm  4:00  fixed most of merge, TrackUnit cases 8,9,10,11, 
+                     worked out valgrind errors for merge, began implementation of track closest
+10/14 7:00 pm  3:00  attended office hours at HLH to try to fix my last valgrind errors
+                     implemented and partly debugged track closest
+10/15 9:00 am  1:00  taking a late day to fix up last valgrind errors for merge and closest, fixed for example cases
+10/15 1:00 pm  3:00  making sure that I handle edge cases, fix test_timing_merge segfault error
+10/16 2:00 pm  5:00  working on test_timing merge segfault error, not able to properly find it
+10/17 1:00 pm  3:00  using gdb finally fixed my remove function and also found source of error for test timing
+                     successfully debugged
+               ----
+               39:00 TOTAL time spent
+
+I discussed my solution with: Alex Shi, Neil Sachdeva, Kyle Wang
+(and watched five episodes of Jujutsu Kaisen and some Squid Game).
+
+DISCUSSION
+
+Debugging track.c was extremely difficult because I had to learn how to 
+track and trace valgrind errors for the first time. Not only did I not 
+have any experience with gdb, I had to manually keep in mind all the places
+where I wasn't freeing (or in many cases, double freeing), which is especially
+difficult given the size of the program and the many cases and functions I was handling.
+Another problem was figuring out the pointer logic: oftentimes it was confusing and hard
+to wrap my head around. For track merge, it really helped to write out a detailed picture
+of the nodes on pen and paper and then translate that image into code. For track closest,
+as well, debugging the actual code proved difficult. I used three late days
+because I couldn't figure out several key bugs with the code. One was that my lists
+weren't swapping properly in a certain case, and the tails were switched, resulting in 
+segfault errors. In addition, I forgot to properly link up my nodes in a certain case
+which resulted in weird memory free errors. I think once I had a working implementation
+of GPS.c it really helped me speed along since I could use the example cases to check my code. 
+I think overall, I learned a lot about valgrind and debugging and also had a mini mental-breakdown.
+Finally, implementing the k time case and working out the casework was very tricky. I really had
+to write out the different cases and unit test my code as I went to make sure my ideas were good.

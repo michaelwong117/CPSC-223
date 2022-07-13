@@ -1,0 +1,4 @@
+./TSP input.in -given -farthest -exchange any -exchange adjacent -exchange adjacent -exchange any -given -given -farthest > output.out
+
+gcc -o TSP TSP_basic.C location.c -lm
+

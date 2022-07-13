@@ -1,0 +1,23 @@
+ESTIMATE of time to complete assignment: 20 hours
+
+      Time     Time
+Date  Started  Spent Work completed
+----  -------  ----  --------------
+
+12/10 7:00 pm  4:00  copied over code from graph.c and began implementing
+                     implemented and partly debugged main function
+12/11 9:00 am  2:00  started editing gmap.c and changed the adjacency matrix code to 
+                     an adjacency set for better runtimes
+12/13 1:00 pm  5:00  making sure that I handle edge cases, fix segfault error
+12/14 2:00 pm  5:00  working on segfault error and handling how to implement Friends 
+                     and common neighbors, not too bad implementation wise
+12/14 8:00 pm  4:00  using gdb finally fixed my remove function and also found source 
+                     of error for test timing, successfully debugged and implemented other parts of friends   
+               ----
+               20:00 TOTAL time spent
+
+I discussed my solution with: N/A
+
+DISCUSSION
+
+I felt much more in control during this pset than the previous, especially since I learned how to handle valgrind errors, manage memory, and take bite-sized approaches at debugging that saved me a lot of time later on. I think there were some key things i had to realize about my implementation of graph.c and Friends, but I had a robust plan that actually worked and seemed to implement fine. Figuring out double free or valgrind errors has become a lot easier ever since I started understanding what a malloc was. The most challenging part of this problem overall was probably the implementation and just keeping track of all the moving parts in the graph logic; however, this was manageable by thinking clearly and taking it slow, function by function. Cocneptually, it wasn't too difficult. Another problem was figuring out the pointer logic: oftentimes it was confusing and hard to wrap my head around. For graph.c, it really helped to write out a detailed picture of the nodes on pen and paper and then translate that image into code. Finally, implementing the edge cases and working out the casework was not too bad.

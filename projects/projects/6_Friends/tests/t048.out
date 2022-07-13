@@ -1,0 +1,3 @@
+A, B have mutual friends C F
+B, B have mutual friends A C D E F
+C, D have mutual friends B

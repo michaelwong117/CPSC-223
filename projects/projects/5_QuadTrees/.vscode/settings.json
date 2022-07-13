@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "array": "c",
+        "bitset": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "chrono": "cpp",
+        "variant": "cpp",
+        "string": "c",
+        "vector": "c",
+        "stdio.h": "c",
+        "minheap.h": "c",
+        "stdlib.h": "c"
+    }
+}

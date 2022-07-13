@@ -1,0 +1,13 @@
+ESTIMATE of time to complete assignment: 2 hours
+
+      Time     Time
+Date  Started  Spent Work completed
+----  -------  ----  --------------
+9/04  3:15pm  1:45  read assignment, configured zoo shortcuts, ported over zoo files to local system
+
+9/14  5:15pm  0:15  wrote and tested code
+
+I discussed my solution with: N/A
+
+
+It was very satisfying using FUSE to mount my zoo project folder onto my local desktop so I could edit directly with Sublime text. After some configuration, I was also able to use z as a shortcut to go into the Zoo. Overall, I think I'm happy with this setup! (I would like to learn how to use GitHub side-by-side however.)
